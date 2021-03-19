@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "sar-posts"
+  "defaultProject": "sar-posts",
+  "cli": {
+    "analytics": "6eac6597-c5e0-4b8f-bc3e-8e9f04cbebf9"
+  }
 }
