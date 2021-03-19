@@ -1,1 +1,13 @@
-
+<div class="contaniner">
+    <section class="posts">
+        <div class="post-card" *ngFor="let post of posts">
+            <p>Post №{{post.id}}</p>
+            <p> {{post.title}}</p>
+        </div>
+    </section>
+    <section class="images">
+        <div class="photo" *ngFor="let photo of photos">
+            <img src="{{photo.thumbnailUrl}}" alt="">
+        </div>
+    </section>
+</div>

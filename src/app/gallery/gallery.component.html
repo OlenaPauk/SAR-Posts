@@ -1,1 +1,5 @@
-<p>gallery works!</p>
+<section class="images">
+    <div class="photo" *ngFor="let photo of photos">
+        <img src="{{photo.url}}" alt="">
+    </div>
+</section>

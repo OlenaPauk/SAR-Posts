@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IPhoto } from '../shared/posts';
+import { PostsService } from '../shared/posts.service';
 
 @Component({
   selector: 'app-gallery',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-
-  constructor() { }
+  start: number = 0;
+  limit: number = 10;
+  photos: IPhoto[]= [];
+  constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+    this.getPhotos() 
+  }
+  getPhotos() {
+    this.postsService.getPhotos(this.start, this.limit).subscribe((data:any)=>{
+      this.photos.push(...data)
+      console.log(this.photos)
+    })
   }
 
 }
