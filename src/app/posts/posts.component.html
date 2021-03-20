@@ -1,14 +1,14 @@
 <div class="post-page">
-    <button (click)="createNewPost()" *ngIf="!flagNewPost" class="create-post">Add new post</button>
+    <button (click)="showDialogueNewPost()" *ngIf="!flagNewPost" class="create-post">Add new post</button>
     <div class="new-post" *ngIf="flagNewPost">
-        <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="addPost()" placeholder="Post title...">
-        <textarea [(ngModel)]="bodyNewPost" (keydown.enter)="addPost()" placeholder="Post body..."></textarea>
-        <button (click)="addPost()" [disabled]="titleNewPost==='' || bodyNewPost==='' ">Add post</button>
+        <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="createPost()" placeholder="Post title...">
+        <textarea [(ngModel)]="bodyNewPost" (keydown.enter)="createPost()" placeholder="Post body..."></textarea>
+        <button (click)="createPost()" [disabled]="titleNewPost==='' || bodyNewPost==='' ">Add post</button>
     </div>
     <div class="posts">
         <div class="post-card" *ngFor="let post of posts">
             <div class="btn-post">
-                <button (click)="editPost(post.id)">&#9998;</button>
+                <button (click)="showDialogueEditPost(post.id)">&#9998;</button>
                 <button class="delete-post" (click)="deletePost(post.id)">&#10006;</button>
             </div>
             <p class="title"> {{post.title}}</p>
@@ -26,9 +26,10 @@
 </div>
 
 <div *ngIf="editFlag" class="edit">
+ 
     <div class="edit-post">
-        <input type="text" [(ngModel)]="titleEditPost" (keydown.enter)="addPost()" placeholder="Post title...">
-        <textarea [(ngModel)]="bodyEditPost" (keydown.enter)="addPost()" placeholder="Post body..."></textarea>
-        <button (click)="saveEditPost()" [disabled]="titleEditPost==='' || bodyEditPost==='' ">Save post</button>
+        <input type="text" [(ngModel)]="post.title" (keydown.enter)="saveEditPost()" placeholder="Post title...">
+        <textarea [(ngModel)]="post.body" (keydown.enter)="saveEditPost()" placeholder="Post body..."></textarea>
+        <button (click)="saveEditPost()" [disabled]="!post.title || !post.body">Save post</button>
     </div>
 </div>

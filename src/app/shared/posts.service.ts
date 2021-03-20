@@ -7,6 +7,10 @@ import { Injectable } from '@angular/core';
 })
 export class PostsService {
 
+  posts:IPost[]=[];
+
+  
+
   constructor(private http:HttpClient) { }
 
   getPosts(start: number, limit: number) {

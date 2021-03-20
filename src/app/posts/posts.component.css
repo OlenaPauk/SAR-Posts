@@ -60,7 +60,7 @@ textarea {
 
 .post-card {
     width: 45%;
-    min-height: 90px;
+    height: 100%;
     border: 1px dashed gray;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -116,17 +116,37 @@ p:first-letter {
     margin-top: 20px;
     cursor: pointer;
 }
-/* .edit{
-    width: 100vw;
-    height: 100vh;
-    background-color: gray;
-    position: relative;
-    z-index: 1;
-} */
+.edit{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(189, 194, 160,0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  
+}
 .edit-post {
     position: fixed;
     z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
 }
+.edit-post input,.edit-post textarea{
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    border-width: 0;
+    border-radius: 5px;
+}
+.edit-post textarea{
+    padding: 5px;
+    height: 100px;
+}
+.edit-post button{
+    padding: 5px;
+    cursor: pointer;
+}
+

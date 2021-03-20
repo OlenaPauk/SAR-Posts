@@ -1,6 +1,6 @@
 import { PostsService } from './../shared/posts.service';
 import { Component, OnInit } from '@angular/core';
-import { IPost } from '../shared/posts';
+import { IPost, Post } from '../shared/posts';
 
 
 @Component({
@@ -11,13 +11,13 @@ import { IPost } from '../shared/posts';
 export class PostsComponent implements OnInit {
   start: number = 0;
   limit: number = 10;
+
   posts: IPost[] = [];
 
   titleNewPost: string = '';
   bodyNewPost: string = '';
-  titleEditPost: string = '';
-  bodyEditPost: string = '';
-  editId!:number;
+
+  post: IPost = new Post(0,'','');
 
   showButton: boolean = true;
   flagNewPost: boolean = false;
@@ -33,10 +33,10 @@ export class PostsComponent implements OnInit {
       this.posts.push(...data)
     })
   }
-  createNewPost() {
+  showDialogueNewPost() {
     this.flagNewPost = true;
   }
-  addPost() {
+  createPost() {
     if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
       const newPost: IPost = {
         id: Date.now(),
@@ -52,25 +52,20 @@ export class PostsComponent implements OnInit {
 
   }
 
-  editPost(id: number) {
-    this.editFlag = true;
-    let editPost: IPost | any  = this.posts.find(post => post.id === id);
-    this.editId = id;
-    this.titleEditPost = editPost?.title 
-    this.bodyEditPost = editPost?.body
+  showDialogueEditPost(id: number) {
+    this.editFlag = true;    
+    this.post = this.posts.find(u => u.id === id) || new Post(0,'','');
   }
   saveEditPost() {
-    let savePost:IPost | any = this.posts.find(post=>post.id===this.editId)
-    savePost.title = this.titleEditPost
-    savePost.body = this.bodyEditPost
+    let savePost = this.posts.find(u => u.id === this.post.id) || new Post(0,'','');
+    savePost = this.post;
     this.editFlag = false;
-    this.titleEditPost = '';
-    this.bodyEditPost = '';
   }
 
   deletePost(id: number) {
     this.posts = this.posts.filter(post => post.id !== id);
   }
+
   showMore() {
     this.start += this.limit;
     this.getPosts();
