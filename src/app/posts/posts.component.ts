@@ -1,5 +1,5 @@
 import { PostsService } from './../shared/posts.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IPost } from '../shared/posts';
 
 
@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   titleNewPost: string = '';
   bodyNewPost: string = '';
   showButton: boolean = true;
+  flagNewPost:boolean=false;
 
   constructor(private postsService: PostsService) { }
 
@@ -27,19 +28,23 @@ export class PostsComponent implements OnInit {
       this.posts.push(...data)
     })
   }
+  createNewPost(){
+this.flagNewPost = true;
+  }
   addPost() {
-      if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
-        const newPost: IPost = {
-          id: Date.now(),
-          title: this.titleNewPost,
-          body: this.bodyNewPost
-        }
-      
-        this.posts.unshift(newPost);
-        this.titleNewPost = '';
-        this.bodyNewPost = '';
+    if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
+      const newPost: IPost = {
+        id: Date.now(),
+        title: this.titleNewPost,
+        body: this.bodyNewPost
+      }
+
+      this.posts.unshift(newPost);
+      this.titleNewPost = '';
+      this.bodyNewPost = '';
+      this.flagNewPost = false;
     }
-   
+
   }
 
   editPost(id: number) {
