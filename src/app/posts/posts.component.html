@@ -1,5 +1,5 @@
 <div class="post-page">
-    <button (click)="createNewPost()" *ngIf="!flagNewPost" class="create-post">Create new post</button>
+    <button (click)="createNewPost()" *ngIf="!flagNewPost" class="create-post">Add new post</button>
     <div class="new-post" *ngIf="flagNewPost">
         <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="addPost()" placeholder="Post title...">
         <textarea [(ngModel)]="bodyNewPost" (keydown.enter)="addPost()" placeholder="Post body..."></textarea>

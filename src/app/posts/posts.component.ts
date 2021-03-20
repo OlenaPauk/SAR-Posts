@@ -17,6 +17,7 @@ export class PostsComponent implements OnInit {
   bodyNewPost: string = '';
   titleEditPost: string = '';
   bodyEditPost: string = '';
+  editId!:number;
 
   showButton: boolean = true;
   flagNewPost: boolean = false;
@@ -53,12 +54,18 @@ export class PostsComponent implements OnInit {
 
   editPost(id: number) {
     this.editFlag = true;
-    let editPost: IPost | any = this.posts.find(post => post.id === id);
-    this.titleEditPost = editPost?.title
+    let editPost: IPost | any  = this.posts.find(post => post.id === id);
+    this.editId = id;
+    this.titleEditPost = editPost?.title 
     this.bodyEditPost = editPost?.body
   }
   saveEditPost() {
-
+    let savePost:IPost | any = this.posts.find(post=>post.id===this.editId)
+    savePost.title = this.titleEditPost
+    savePost.body = this.bodyEditPost
+    this.editFlag = false;
+    this.titleEditPost = '';
+    this.bodyEditPost = '';
   }
 
   deletePost(id: number) {
