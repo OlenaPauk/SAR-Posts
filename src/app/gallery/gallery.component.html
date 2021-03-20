@@ -1,5 +1,8 @@
-<section class="images">
-    <div class="photo" *ngFor="let photo of photos">
-        <img src="{{photo.url}}" alt="">
-    </div>
-</section>
+<div class="photo-page">
+    <section class="photos">
+        <div class="photo" *ngFor="let photo of photos">
+            <img src="{{photo.thumbnailUrl}}" alt="">
+        </div>
+    </section>
+    <button class="btn btn-more" (click)="showMore()">More posts</button>
+</div>

@@ -1,0 +1,15 @@
+.photo-page{
+    width: 90vw;
+    margin-top: 10px;
+    margin-bottom: 50px;
+
+}
+.photos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.photo{
+    margin: 10px;
+}

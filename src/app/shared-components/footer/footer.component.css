@@ -1,9 +1,10 @@
 nav {
     background-color: rgb(173, 195, 101);
-    position: fixed;
+    position: relative;
     left: 0;
     bottom: 0;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
 }
 

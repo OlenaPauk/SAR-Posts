@@ -12,6 +12,8 @@ import { HeaderComponent } from './shared-components/header/header.component';
 import { FooterComponent } from './shared-components/footer/footer.component';
 import { SidebarComponent } from './shared-components/sidebar/sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PhotoComponent } from './gallery/photo/photo.component';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
 
 @NgModule({
@@ -23,14 +25,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactUsComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

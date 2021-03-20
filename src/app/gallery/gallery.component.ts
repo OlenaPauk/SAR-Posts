@@ -21,5 +21,9 @@ export class GalleryComponent implements OnInit {
       this.photos.push(...data)
     })
   }
+  showMore(){
+    this.start += this.limit;
+    this.getPhotos();
+  }
 
 }
