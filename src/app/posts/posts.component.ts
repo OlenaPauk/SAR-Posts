@@ -1,6 +1,7 @@
 import { PostsService } from './../shared/posts.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IPost } from '../shared/posts';
+
 
 @Component({
   selector: 'app-posts',
@@ -10,23 +11,49 @@ import { IPost } from '../shared/posts';
 export class PostsComponent implements OnInit {
   start: number = 0;
   limit: number = 10;
-  posts: IPost[]= [];
+  posts: IPost[] = [];
+
+  titleNewPost: string = '';
+  bodyNewPost: string = '';
   showButton: boolean = true;
+
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    this. getPosts()
+    this.getPosts()
   }
   getPosts() {
-    this.postsService.getPosts(this.start, this.limit).subscribe((data:any)=>{
+    this.postsService.getPosts(this.start, this.limit).subscribe((data: any) => {
       this.posts.push(...data)
     })
+  }
+  addPost() {
+      if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
+        const newPost: IPost = {
+          id: Date.now(),
+          title: this.titleNewPost,
+          body: this.bodyNewPost
+        }
+      
+        this.posts.unshift(newPost);
+        this.titleNewPost = '';
+        this.bodyNewPost = '';
+    }
+   
+  }
+
+  editPost(id: number) {
+
+  }
+
+  deletePost(id: number) {
+    this.posts = this.posts.filter(post => post.id !== id);
   }
   showMore() {
     this.start += this.limit;
     this.getPosts();
-    if(this.start>=81){
-      this.showButton=false
+    if (this.start >= 81) {
+      this.showButton = false
     }
   }
 

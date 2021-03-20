@@ -19,7 +19,6 @@ export class GalleryComponent implements OnInit {
   getPhotos() {
     this.postsService.getPhotos(this.start, this.limit).subscribe((data:any)=>{
       this.photos.push(...data)
-      console.log(this.photos)
     })
   }
 

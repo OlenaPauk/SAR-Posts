@@ -1,13 +1,27 @@
-  <div class="posts">
-    <div class="post-card" *ngFor="let post of posts" >
-        <p>Post №{{post.id}}</p>
-        <p> {{post.title}}</p>
+<div class="post-page">
+    <div class="newPost">
+        <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="addPost()">
+        <textarea  cols="30" rows="10" [(ngModel)]="bodyNewPost" (keydown.enter)="addPost()"></textarea>
+        <button (click)="addPost()" [disabled]="titleNewPost==='' || bodyNewPost==='' ">Add post</button>
     </div>
+    <div class="posts">
+        <div class="post-card" *ngFor="let post of posts">
+            <p>Post №{{post.id}}</p>
+            <p> {{post.title}}</p>
+            <button (click)="editPost(post.id)">Edit</button>
+            <button (click)="deletePost(post.id)">Delete</button>
+        </div>
+    </div>
+    <div class="button">
+        <button class="btn btn-more" (click)="showMore()" *ngIf="showButton;else noButton">More posts</button>
+        <ng-template #noButton>
+            <p>It's all!</p>
+        </ng-template>
+    </div>
+</div>
+
+
+<ng-template #modal>
     
-</div>
-<div class="button">
-    <button class="btn btn-more" (click)="showMore()" *ngIf="showButton;else noButton">More posts</button>
-    <ng-template #noButton>
-        <p>It's all!</p>
-    </ng-template>
-</div>
+</ng-template>
+
