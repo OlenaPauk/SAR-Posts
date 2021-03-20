@@ -1,10 +1,39 @@
 .form {
     min-height: 100vh;
+    background-color: rgb(113, 159, 233);
+    padding-top: 30px;
 }
 
 form {
-    max-width: 400px;
-    height: 500px;
-    background-color: rgb(27, 149, 74);
-    margin: 10px auto;
+    max-width: 350px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* text-align: center;
+    justify-content: center; */
+
+}
+.form-group input{
+height: 40px;
+padding: 5px;
+outline: none;
+margin-left: 10px;
+
+}
+label{
+   width: 200px;
+   flex: 1 0 120px;
+   max-width: 220px;
+}
+
+

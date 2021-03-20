@@ -9,8 +9,7 @@ import { IPost, Post } from '../shared/posts';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  start: number = 0;
-  limit: number = 10;
+
 
   posts: IPost[] = [];
 
@@ -26,12 +25,11 @@ export class PostsComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+    // this.postsService.getPosts(0,10);
     this.getPosts()
   }
   getPosts() {
-    this.postsService.getPosts(this.start, this.limit).subscribe((data: any) => {
-      this.posts.push(...data)
-    })
+   this.posts =  this.postsService.getAllPosts()
   }
   showDialogueNewPost() {
     this.flagNewPost = true;
@@ -44,7 +42,7 @@ export class PostsComponent implements OnInit {
         body: this.bodyNewPost
       }
 
-      this.posts.unshift(newPost);
+     this.postsService.addPost(newPost)
       this.titleNewPost = '';
       this.bodyNewPost = '';
       this.flagNewPost = false;
@@ -67,11 +65,11 @@ export class PostsComponent implements OnInit {
   }
 
   showMore() {
-    this.start += this.limit;
-    this.getPosts();
-    if (this.start >= 81) {
-      this.showButton = false
-    }
+    // this.start += this.limit;
+    // this.getPosts();
+    // if (this.start >= 81) {
+    //   this.showButton = false
+    // }
   }
 
 }

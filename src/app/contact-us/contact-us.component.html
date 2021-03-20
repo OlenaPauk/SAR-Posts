@@ -3,7 +3,6 @@
         <div class="form-group">
             <label>Full Name</label>
             <input class="form-control" name="name" formControlName="userName" />
-              
             <div class="alert alert-danger"
                 *ngIf="contactForm.controls['userName'].invalid && contactForm.controls['userName'].touched">
                 Incorrect name

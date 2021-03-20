@@ -21,4 +21,11 @@ ul li {
 ul li a {
     text-decoration: none;
     font-size: 17px;
+    color: white;
 }
+ul li a:hover{
+    color: rgb(209, 188, 149);
+ }
+.active{
+    text-decoration: underline;
+ }

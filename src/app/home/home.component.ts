@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
     this.getPhotos() 
   }
   getPosts() {
-    this.postsService.getPosts(this.start, this.limit).subscribe((data:any)=>{
-      this.posts.push(...data)
-    })
+    this.postsService.getPosts(this.start, this.limit)
   }
   getPhotos() {
     this.postsService.getPhotos(this.start, 12).subscribe((data:any)=>{

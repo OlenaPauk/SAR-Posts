@@ -6,17 +6,29 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PostsService {
+  start: number = 0;
+  limit: number = 10;
+  posts: IPost[] = [];
 
-  posts:IPost[]=[];
+  constructor(private http: HttpClient) {  }
 
   
 
-  constructor(private http:HttpClient) { }
-
   getPosts(start: number, limit: number) {
-    return this.http.get<IPost>(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`)
+    return this.http.get<IPost>(`https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`).subscribe((data: any) => {
+      this.posts.push(...data)
+    })
   }
-  getPhotos(start: number, limit: number){
+  getAllPosts() {
+    return this.posts ;
+  }
+  addPost(post: IPost) {
+    this.posts.unshift(post)
+  }
+
+
+
+  getPhotos(start: number, limit: number) {
     return this.http.get<IPost>(`http://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`)
   }
 }
