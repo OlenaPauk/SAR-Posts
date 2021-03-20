@@ -13,7 +13,6 @@ import { FooterComponent } from './shared-components/footer/footer.component';
 import { SidebarComponent } from './shared-components/sidebar/sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhotoComponent } from './gallery/photo/photo.component';
-import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 
 
 @NgModule({
@@ -33,8 +32,7 @@ import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    SidebarModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,21 @@
-.photo-page{
+.photo-page {
     width: 90vw;
     margin-top: 10px;
     margin-bottom: 50px;
-
+    min-height: 100vh;
 }
-.photos{
+
+.photos {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
-.photo{
+
+.photo {
     margin: 10px;
+}
+
+.btn-more {
+    margin-left: 300px;
 }
