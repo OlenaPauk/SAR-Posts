@@ -1,6 +1,6 @@
 <div class="post-page">
-    <button (click)="createNewPost()" *ngIf="flagNewPost">Create new post</button>
-    <div class="new-post" *ngIf="!flagNewPost">
+    <button (click)="createNewPost()" *ngIf="!flagNewPost" class="create-post">Create new post</button>
+    <div class="new-post" *ngIf="flagNewPost">
         <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="addPost()" placeholder="Post title...">
         <textarea [(ngModel)]="bodyNewPost" (keydown.enter)="addPost()" placeholder="Post body..."></textarea>
         <button (click)="addPost()" [disabled]="titleNewPost==='' || bodyNewPost==='' ">Add post</button>
@@ -11,7 +11,7 @@
                 <button (click)="editPost(post.id)">&#9998;</button>
                 <button class="delete-post" (click)="deletePost(post.id)">&#10006;</button>
             </div>
-            <p> {{post.title}}</p>
+            <p class="title"> {{post.title}}</p>
             <p> {{post.body}}</p>
 
 
@@ -22,5 +22,13 @@
         <ng-template #noButton>
             <p>It's all!</p>
         </ng-template>
+    </div>
+</div>
+
+<div *ngIf="editFlag" class="edit">
+    <div class="edit-post">
+        <input type="text" [(ngModel)]="titleEditPost" (keydown.enter)="addPost()" placeholder="Post title...">
+        <textarea [(ngModel)]="bodyEditPost" (keydown.enter)="addPost()" placeholder="Post body..."></textarea>
+        <button (click)="saveEditPost()" [disabled]="titleEditPost==='' || bodyEditPost==='' ">Save post</button>
     </div>
 </div>

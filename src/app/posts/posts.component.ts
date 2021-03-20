@@ -15,8 +15,12 @@ export class PostsComponent implements OnInit {
 
   titleNewPost: string = '';
   bodyNewPost: string = '';
+  titleEditPost: string = '';
+  bodyEditPost: string = '';
+
   showButton: boolean = true;
-  flagNewPost:boolean=false;
+  flagNewPost: boolean = false;
+  editFlag: boolean = false
 
   constructor(private postsService: PostsService) { }
 
@@ -28,8 +32,8 @@ export class PostsComponent implements OnInit {
       this.posts.push(...data)
     })
   }
-  createNewPost(){
-this.flagNewPost = true;
+  createNewPost() {
+    this.flagNewPost = true;
   }
   addPost() {
     if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
@@ -48,6 +52,12 @@ this.flagNewPost = true;
   }
 
   editPost(id: number) {
+    this.editFlag = true;
+    let editPost: IPost | any = this.posts.find(post => post.id === id);
+    this.titleEditPost = editPost?.title
+    this.bodyEditPost = editPost?.body
+  }
+  saveEditPost() {
 
   }
 
