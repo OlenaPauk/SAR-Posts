@@ -20,8 +20,11 @@
     "@angular/platform-browser-dynamic": "~11.0.0",
     "@angular/router": "~11.0.0",
     "@syncfusion/ej2-angular-navigations": "^18.4.47",
+    "angular-cli": "^1.0.0-beta.28.3",
+    "github": "^14.0.0",
     "ngx-bootstrap": "^6.2.0",
     "normalize.css": "^8.0.1",
+    "pages": "0.0.16",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
