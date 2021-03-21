@@ -61,7 +61,9 @@ textarea {
 
 .post-card {
     width: 45%;
-    height: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    /* height: 100%; */
     border: 1px dashed gray;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -130,7 +132,6 @@ p:first-letter {
 
 .edit-post {
     position: fixed;
-   
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

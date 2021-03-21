@@ -11,25 +11,37 @@ import { IPhoto, IPost } from '../shared/posts';
 export class HomeComponent implements OnInit {
   start: number = 0;
   limit: number = 10;
-  posts: IPost[]= [];
-  photos: IPhoto[]= [];
-  constructor(private postsService: PostsService,private photosService:PhotosService) { }
+  posts: IPost[] = [];
+  photos: IPhoto[] = [];
+  constructor(private postsService: PostsService, private photosService: PhotosService) { }
 
   ngOnInit(): void {
     this.getPhotos();
-    this.getPosts();
+    let allPosts = this.postsService.getPostsAll();
+    if (allPosts.length === 0) {
+      this.getPostsFromApi();
+    }
+    else {
+      this.getChangePosts()
+    }
   }
-  
-  getPosts() {
+
+  getPostsFromApi() {
     this.postsService.getPostsFromApi(this.start, this.limit)
       .subscribe((data: any) => {
         this.posts.push(...data);
       })
   }
+
+  getChangePosts() {
+    this.posts = this.postsService.getPostsAll().slice(0, 10)
+  }
+
   getPhotos() {
     this.photosService.getPhotosFromApi(this.start, this.limit)
       .subscribe((data: any) => {
         this.photos.push(...data);
       })
   }
+
 }

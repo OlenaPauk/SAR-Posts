@@ -1,4 +1,3 @@
-
 export interface IPost {
     id: number;
     title: string;
@@ -11,5 +10,6 @@ export interface IPhoto {
     thumbnailUrl: string;
 }
 export class Post implements IPost {
-    constructor(public id: number, public title: string, public body: string) { }
+    constructor(public id: number, public title: string, public body: string) {
+     }
 }

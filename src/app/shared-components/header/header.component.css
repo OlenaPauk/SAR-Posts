@@ -1,5 +1,5 @@
 nav {
-    background-color: rgb(209, 66, 66);
+    background-color: rgb(195, 80, 80);
     padding: 15px;
 }
 
@@ -19,9 +19,17 @@ ul li a {
     font-size: 17px;
     color: white;
 }
-ul li a:hover{
-   color: rgb(209, 188, 149);
+
+ul li a:hover {
+    color: rgb(209, 188, 149);
 }
-.active{
-   text-decoration: underline;
+
+.active {
+    opacity: 0.5;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        display: none;
+    }
 }

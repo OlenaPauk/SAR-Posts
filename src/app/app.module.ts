@@ -13,7 +13,6 @@ import { HeaderComponent } from './shared-components/header/header.component';
 import { FooterComponent } from './shared-components/footer/footer.component';
 import { SidebarComponent } from './shared-components/sidebar/sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PhotoComponent } from './gallery/photo/photo.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { PhotoComponent } from './gallery/photo/photo.component';
     ContactUsComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent,
-    PhotoComponent
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -18,7 +18,7 @@ export class PhotosService {
   createPhotos(photosList: IPhoto[]) {
     this.photos.push(...photosList);
   }
-  
+
   getPhotosAll() {
     return this.photos;
   }

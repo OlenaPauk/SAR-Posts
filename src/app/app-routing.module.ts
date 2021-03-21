@@ -1,4 +1,3 @@
-import { PhotoComponent } from './gallery/photo/photo.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PostsComponent } from './posts/posts.component';
@@ -7,12 +6,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'posts',component:PostsComponent},
-  {path:'gallery',component:GalleryComponent},
-  {path:'gallery/:id',component:PhotoComponent},
-  {path:'contact-us',component:ContactUsComponent},
-  {path:'**',redirectTo:'/'},
+  { path: '', component: HomeComponent },
+  { path: 'posts', component: PostsComponent },
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

@@ -22,8 +22,8 @@ export class ContactUsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  submit() { 
+
+  submit() {
     this.contactForm.reset()
   }
-
 }

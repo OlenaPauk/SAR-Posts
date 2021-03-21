@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: rgb(223, 87, 87);
+    background-color: rgb(216, 51, 51);
 }
 
 .posts {
@@ -20,6 +20,8 @@
 .post-card {
     width: 90%;
     min-height: 90px;
+    max-height: 200px;
+    overflow-y: auto;
     border: 1px dashed gray;
     border-left: 4px solid gray;
     border-bottom-left-radius: 40px;
@@ -30,8 +32,8 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     background-color: #fff;
+    word-break: break-all;
 }
 
 .post-card p {
@@ -43,7 +45,8 @@
 p:first-letter {
     text-transform: uppercase;
 }
-.title{
+
+.title {
     font-weight: 600;
 }
 
@@ -56,7 +59,14 @@ p:first-letter {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.photo{
+
+.photo {
     margin-bottom: 10px;
     margin-left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    .images {
+        justify-content: center;
+    }
 }

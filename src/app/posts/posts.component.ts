@@ -14,10 +14,8 @@ export class PostsComponent implements OnInit {
   counter: number = 0;
   posts: IPost[] = [];
 
-  titleNewPost: string = '';
-  bodyNewPost: string = '';
-
-  post: IPost = new Post(0, '', '');
+  postEdit: IPost = new Post(0, '', '');
+  postNew: IPost = new Post(0, '', '');
 
   showButton: boolean = true;
   flagNewPost: boolean = false;
@@ -41,34 +39,35 @@ export class PostsComponent implements OnInit {
         this.postsService.createPosts(data)
       })
   }
+
   showDialogueNewPost() {
+    this.postNew = new Post(Date.now(), '', '');
     this.flagNewPost = true;
   }
+
   createPost() {
-    if (this.titleNewPost.trim() && this.bodyNewPost.trim()) {
-      const newPost: IPost = {
-        id: Date.now(),
-        title: this.titleNewPost,
-        body: this.bodyNewPost
-      }
-      console.log(newPost)
-      this.posts.unshift(newPost)
-      this.postsService.addPost(newPost)
-      this.titleNewPost = '';
-      this.bodyNewPost = '';
+    if (this.postNew.title.trim() && this.postNew.body.trim()) {
+      this.posts.unshift(this.postNew)
+      this.postsService.addPost(this.postNew)
+
       this.flagNewPost = false;
       this.counter--;
     }
   }
 
   showDialogueEditPost(id: number) {
-    this.editFlag = true;    
-    this.post = this.posts.find(u => u.id === id) || new Post(0,'','');
+    this.editFlag = true;
+    this.postEdit = Object.assign({}, this.posts.find(u => u.id === id) || new Post(0, '', ''));
+    document.body.style.overflow = "hidden";
   }
+
   saveEditPost() {
-    let savePost = this.posts.find(u => u.id === this.post.id) || new Post(0,'','');
-    savePost = this.post;
+    let savePost = this.posts.find(post => post.id === this.postEdit.id) || new Post(0, '', '');
+    savePost.title = this.postEdit.title;
+    savePost.body = this.postEdit.body;
+
     this.editFlag = false;
+    document.body.style.overflow = "";
   }
 
   deletePost(id: number) {

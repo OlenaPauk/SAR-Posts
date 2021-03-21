@@ -6,44 +6,63 @@
 
 form {
     max-width: 350px;
-    height: 400px;
     margin: 0 auto;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 }
-.form-group{
+
+.form-group {
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* text-align: center;
-    justify-content: center; */
-
-}
-.form-group input{
-height: 40px;
-padding: 5px;
-outline: none;
-margin-left: 10px;
-
+    justify-content: center;
 }
 
-label{
-   width: 200px;
-   flex: 1 0 120px;
-   max-width: 220px;
+.form-group input {
+    height: 40px;
+    padding: 5px;
+    outline: none;
+    margin-left: 10px;
 }
-.error-message{
+
+label {
+    width: 200px;
+    flex: 1 0 120px;
+    max-width: 220px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    height: 40px;
+    line-height: 50px;
+}
+
+.error-message {
     color: red;
     padding: 5px;
 }
-.btn-submit{
-    padding: 20px;
-    width: 300px;
-    cursor: pointer;
+
+.form-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
+.btn-submit {
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
 
+@media screen and (max-width: 670px) {
+    form {
+        max-width: 250px;
+        margin-left: 170px;
+    }
+    label {
+        margin-left: 20%;
+    }
+}

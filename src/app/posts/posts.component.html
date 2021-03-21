@@ -1,9 +1,10 @@
 <div class="post-page">
     <button (click)="showDialogueNewPost()" *ngIf="!flagNewPost" class="create-post">Add new post</button>
     <div class="new-post" *ngIf="flagNewPost">
-        <input type="text" [(ngModel)]="titleNewPost" (keydown.enter)="createPost()" placeholder="Post title...">
-        <textarea [(ngModel)]="bodyNewPost" (keydown.enter)="createPost()" placeholder="Post body..."></textarea>
-        <button (click)="createPost()" [disabled]="titleNewPost==='' || bodyNewPost==='' ">Add post</button>
+        <input type="text" [(ngModel)]="postNew.title" (keydown.enter)="createPost()" placeholder="Post title...">
+        <textarea [(ngModel)]="postNew.body" (keydown.enter)="createPost()" placeholder="Post body..."></textarea>
+        <button (click)="createPost()" [disabled]="postNew.title.trim()==='' || postNew.body.trim()==='' ">Add
+            post</button>
     </div>
     <div class="posts">
         <div class="post-card" *ngFor="let post of posts">
@@ -14,8 +15,6 @@
             <!-- <p># {{post.id}}</p> -->
             <p class="title"> {{post.title}}</p>
             <p> {{post.body}}</p>
-
-
         </div>
     </div>
     <div class="show-posts">
@@ -27,10 +26,10 @@
 </div>
 
 <div *ngIf="editFlag" class="edit">
- 
     <div class="edit-post">
-        <input type="text" [(ngModel)]="post.title" (keydown.enter)="saveEditPost()" placeholder="Post title...">
-        <textarea [(ngModel)]="post.body" (keydown.enter)="saveEditPost()" placeholder="Post body..."></textarea>
-        <button (click)="saveEditPost()" [disabled]="!post.title || !post.body">Save post</button>
+        <input type="text" [(ngModel)]="postEdit.title" (keydown.enter)="saveEditPost()" placeholder="Post title...">
+        <textarea [(ngModel)]="postEdit.body" (keydown.enter)="saveEditPost()" placeholder="Post body..."></textarea>
+        <button (click)="saveEditPost()" [disabled]="postEdit.title.trim()==='' || postEdit.body.trim()==='' ">
+            Save post</button>
     </div>
 </div>

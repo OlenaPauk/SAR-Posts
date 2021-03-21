@@ -23,6 +23,7 @@ export class GalleryComponent implements OnInit {
       this.photos.push(...existingPhotos);
     }
   }
+
   getPhotos() {
     this.photosService.getPhotosFromApi(this.start, this.limit)
       .subscribe((data: any) => {
@@ -30,6 +31,7 @@ export class GalleryComponent implements OnInit {
         this.photosService.createPhotos(data)
       })
   }
+
   showMore() {
     this.start = this.photos.length;
     this.getPhotos();
