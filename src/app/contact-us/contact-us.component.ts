@@ -16,12 +16,14 @@ export class ContactUsComponent implements OnInit {
         Validators.required,
         Validators.email
       ]),
-      "userPhone": new FormControl("", Validators.pattern("(/^\(\d{3}\)\s\d{3}-\d{4}$/)"))
+      "userPhone": new FormControl("", [Validators.required, Validators.pattern(/^(?:\+3)?8?(0\d{9})$/)])
     });
   }
 
   ngOnInit(): void {
   }
-  submit() { }
+  submit() { 
+    this.contactForm.reset()
+  }
 
 }

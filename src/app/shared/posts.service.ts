@@ -28,7 +28,5 @@ export class PostsService {
 
 
 
-  getPhotos(start: number, limit: number) {
-    return this.http.get<IPost>(`http://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`)
-  }
+ 
 }

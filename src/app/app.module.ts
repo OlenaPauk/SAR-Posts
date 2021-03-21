@@ -1,3 +1,4 @@
+import { PhotosService } from './shared/photos.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -34,7 +35,7 @@ import { PhotoComponent } from './gallery/photo/photo.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [PhotosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: rgb(223, 87, 87);
 }
 
 .posts {
@@ -52,8 +53,9 @@ p:first-letter {
     width: 40vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 .photo{
     margin-bottom: 10px;
+    margin-left: 10px;
 }

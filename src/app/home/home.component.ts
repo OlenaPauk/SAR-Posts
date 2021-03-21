@@ -1,3 +1,4 @@
+import { PhotosService } from './../shared/photos.service';
 import { PostsService } from './../shared/posts.service';
 import { Component, OnInit } from '@angular/core';
 import { IPhoto, IPost } from '../shared/posts';
@@ -12,19 +13,19 @@ export class HomeComponent implements OnInit {
   limit: number = 10;
   posts: IPost[]= [];
   photos: IPhoto[]= [];
-  constructor(private postsService: PostsService) { }
+  constructor(private postsService: PostsService,private photosService:PhotosService) { }
 
   ngOnInit(): void {
     this.getPosts();
-    this.getPhotos() 
+    // this.getPhotos() 
   }
   getPosts() {
     this.postsService.getPosts(this.start, this.limit)
   }
-  getPhotos() {
-    this.postsService.getPhotos(this.start, 12).subscribe((data:any)=>{
-      this.photos.push(...data)
-    })
-  }
+  // getPhotos() {
+  //   this.photosService.getPhotos(this.start, 12).subscribe((data:any)=>{
+  //     this.photos.push(...data)
+  //   })
+  // }
 
 }

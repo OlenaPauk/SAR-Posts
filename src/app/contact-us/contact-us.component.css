@@ -30,10 +30,20 @@ outline: none;
 margin-left: 10px;
 
 }
+
 label{
    width: 200px;
    flex: 1 0 120px;
    max-width: 220px;
+}
+.error-message{
+    color: red;
+    padding: 5px;
+}
+.btn-submit{
+    padding: 20px;
+    width: 300px;
+    cursor: pointer;
 }
 
 
