@@ -12,7 +12,7 @@ export class PhotosService {
   constructor(private http: HttpClient) { }
 
   getPhotosFromApi(start: number, limit: number) {
-    return this.http.get<IPhoto>(`http://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`);
+    return this.http.get<IPhoto>(`https://jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`);
   }
 
   createPhotos(photosList: IPhoto[]) {
