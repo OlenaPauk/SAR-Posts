@@ -70,6 +70,7 @@ textarea {
     padding: 5px;
     border-left: 5px solid gray;
     border-radius: 50px 5px 5px 5px;
+    background-color: #fff;
 }
 
 .btn-post {
@@ -129,7 +130,7 @@ p:first-letter {
 
 .edit-post {
     position: fixed;
-    z-index: 2;
+   
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

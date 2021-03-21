@@ -16,16 +16,20 @@ export class HomeComponent implements OnInit {
   constructor(private postsService: PostsService,private photosService:PhotosService) { }
 
   ngOnInit(): void {
+    this.getPhotos();
     this.getPosts();
-    // this.getPhotos() 
   }
+  
   getPosts() {
-    this.postsService.getPosts(this.start, this.limit)
+    this.postsService.getPostsFromApi(this.start, this.limit)
+      .subscribe((data: any) => {
+        this.posts.push(...data);
+      })
   }
-  // getPhotos() {
-  //   this.photosService.getPhotos(this.start, 12).subscribe((data:any)=>{
-  //     this.photos.push(...data)
-  //   })
-  // }
-
+  getPhotos() {
+    this.photosService.getPhotosFromApi(this.start, this.limit)
+      .subscribe((data: any) => {
+        this.photos.push(...data);
+      })
+  }
 }

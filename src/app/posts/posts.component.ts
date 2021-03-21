@@ -9,14 +9,15 @@ import { IPost, Post } from '../shared/posts';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-
-
+  start: number = 0;
+  limit: number = 10;
+  counter: number = 0;
   posts: IPost[] = [];
 
   titleNewPost: string = '';
   bodyNewPost: string = '';
 
-  post: IPost = new Post(0,'','');
+  post: IPost = new Post(0, '', '');
 
   showButton: boolean = true;
   flagNewPost: boolean = false;
@@ -25,11 +26,20 @@ export class PostsComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
-    // this.postsService.getPosts(0,10);
-    this.getPosts()
+    let existingPosts = this.postsService.getPostsAll();
+    if (existingPosts.length == 0) {
+      this.getPosts();
+    }
+    else {
+      this.posts.push(...existingPosts);
+    }
   }
   getPosts() {
-   this.posts =  this.postsService.getAllPosts()
+    this.postsService.getPostsFromApi(this.start, this.limit)
+      .subscribe((data: any) => {
+        this.posts.push(...data);
+        this.postsService.createPosts(data)
+      })
   }
   showDialogueNewPost() {
     this.flagNewPost = true;
@@ -41,13 +51,14 @@ export class PostsComponent implements OnInit {
         title: this.titleNewPost,
         body: this.bodyNewPost
       }
-
-     this.postsService.addPost(newPost)
+      console.log(newPost)
+      this.posts.unshift(newPost)
+      this.postsService.addPost(newPost)
       this.titleNewPost = '';
       this.bodyNewPost = '';
       this.flagNewPost = false;
+      this.counter--;
     }
-
   }
 
   showDialogueEditPost(id: number) {
@@ -61,15 +72,16 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    this.posts = this.posts.filter(post => post.id !== id);
+    this.counter++;
+    this.postsService.deletePost(id);
+    this.posts = this.postsService.getPostsAll().slice(0)
   }
 
   showMore() {
-    // this.start += this.limit;
-    // this.getPosts();
-    // if (this.start >= 81) {
-    //   this.showButton = false
-    // }
+    this.start = this.posts.length + this.counter;
+    this.getPosts();
+    if (this.start >= 81) {
+      this.showButton = false
+    }
   }
-
 }
